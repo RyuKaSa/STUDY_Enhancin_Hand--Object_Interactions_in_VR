@@ -1,4 +1,11 @@
-\documentclass{llncs}
+\documentclass[11pt]{llncs}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{fontspec}
+\usepackage{float}
+
+\setmainfont{Carlito} % Open-source Calibri alternative
 
 \begin{document}
 
@@ -29,6 +36,13 @@ Participants carried out tasks such as lifting and rotating small virtual blocks
     \item \textbf{Subjective feedback:} Presence, ownership, and perceived agency via standard questionnaires.
 \end{itemize}
 Their findings suggest that synergy-based models plus adaptive collision handling reduce unintended finger--object interpenetrations and yield smoother, more intuitive interactions.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.25\textwidth]{synergy-based_hand_model.png}
+\caption{The figure above shows a 3D synergy-based hand model used for pose reconstruction. The differently color-coded phalanges highlight the different anatomical segmentations and movement constraints. The purple segment marks the proximal interphalangeal joint of the index finger, and its different color emphasizing its unique role in independent articulation. Other fingers remain in a neutral state, showing their relative positioning, adapted from \cite{Ciotti2016}. The distinct colors indicate synergy groups derived from various hand postures, suggesting that the blue-colored portions experience constrained movement, allowing for a simplified representation of joint mobility.}
+\label{fig:synergy-model}
+\end{figure}
 
 \section*{Technologies and Interaction Techniques}
 \paragraph{Display and Input Devices.}
@@ -88,6 +102,13 @@ M. Mangalam, S. Oruganti, G. Buckingham, C. W. Borst,
 \textit{Virtual Reality},
 vol. 28, no. 166, 2024.
 \url{https://doi.org/10.1007/s10055-024-01055-3}.
+
+\bibitem{Ciotti2016}
+S. Ciotti, E. Battaglia, I. Oikonomidis, M. Bianchi,
+``Synergy-driven Performance Enhancement of Vision-based 3D Hand Pose Reconstruction,''
+Conference Paper, Nov. 2016.
+% \url{https://www.researchgate.net/publication/309476562_Synergy-driven_Performance_Enhancement_of_Vision-based_3D_Hand_Pose_Reconstruction}
+\url{https://users.ics.forth.gr/~argyros/mypapers/2016_11_MobiHealth_synergies.pdf}
 
 \end{thebibliography}
 
