@@ -15,11 +15,16 @@
 \maketitle
 
 \section*{Introduction}
-Despite the rapid evolution of Virtual Reality (VR) hardware and visual rendering, enabling truly natural, precise hand--object interactions remains a persistent challenge. Conventional methods often rely on over-simplified hand models or purely physics-based systems, which either fail to capture realistic finger coordination or become computationally heavy for real-time performance. In \emph{Enhancing Hand--Object Interactions in Virtual Reality for Precision Manual Tasks} (Mangalam et al.\ 2024), the authors propose a bio-inspired framework informed by biomechanics, neuroscience, and psychophysics. They argue that \emph{synergy-based} hand modeling, paired with adaptive collision handling, can create more realistic and efficient VR environments, especially for applications requiring fine motor skills (like precise object assembly or surgical training).
+Despite the rapid evolution of Virtual Reality (VR) hardware and visual rendering, enabling truly natural, precise hand--object interactions remains a persistent challenge. Conventional methods often rely on over-simplified hand models or purely physics-based systems, which either fail to capture realistic finger coordination or become computationally heavy for real-time performance. In \emph{Enhancing Hand--Object Interactions in Virtual Reality for Precision Manual Tasks} (Mangalam et al.\ 2024), the authors propose a bio-inspired framework informed by biomechanics, neuroscience, and psychophysics. They argue that \emph{synergy-based} hand modeling, paired with adaptive collision handling, can create more realistic and efficient VR environments, especially for applications that require fine motor skills (such as precise object assembly or surgical training).
 
 \vspace{1em}
 \noindent
-\textbf{Technological and Cognitive Motivations.} The technological motivation stems from a need to simulate not just visually convincing but \emph{functionally accurate} hand interactions, which can be complex given the hand's many joints and real-world collision dynamics. On the cognitive side, the paper points out that fluid manipulation depends on the user's sense of ownership over their virtual hand, as well as accurate anticipation of collision forces (e.g., knowing where and when an object is ``in grasp''). By aligning the control parameters of the virtual hand with known psychophysical constraints (like digit synergies), the approach can meet both technological performance goals (fast, real-time simulation) and cognitive realism (intuitive user experience).
+\textbf{Technological and Cognitive Motivations.} The technological motivation stems from a need to simulate not just visually convincing but \emph{functionally accurate} hand interactions, which can be complex given the hand's many joints and real-world collision dynamics. On the cognitive side, the paper points out that fluid manipulation depends on the user's sense of ownership over their virtual hand, as well as accurate anticipation of collision forces (e.g., knowing where and when an object is ``in grasp'').
+
+The hands have a very delicate and complex structure. Composed of a network of bones, nerves, and around $10 \%$ of all the muscles of a human body, computing the interaction of the user's hands can be a daunting task.
+How can the user tell the material of an object? If it is slippery, how can he know that his virtual hand are applying enough pressure to prevent the object from falling down. Since people are used to their body that they trained on all their life, having a new pair of hands can be like discovering a new limb, and due to muscular memory, it can be frustrating to be clumsy with your own hands.
+
+By aligning the control parameters of the virtual hand with known psychophysical constraints (like digit synergies), the approach can meet both technological performance goals (fast, real-time simulation) and cognitive realism (intuitive user experience).
 
 \section*{Key Contributions and Thematic Overview}
 \paragraph{Synergy-Based Modeling of the Virtual Hand.}
@@ -54,6 +59,13 @@ The synergy framework can leverage multiple sensor inputs: standard controller o
 \paragraph{Interaction Design.}
 Interaction techniques revolve around direct hand manipulation: users attempt to grab the virtual object using their natural finger closure. The system detects collision initiation through heuristics (e.g., contact points or bounding volumes). Then, once a grasp is deemed stable, local physics-based corrections anchor the object to the hand. This two-step approach balances real-time efficiency (no full physics at all times) and accuracy (no floating objects).
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{Virtual Hand-Object.png}
+\caption{The figure above from \cite{Mangalam2024} shows the different methods that can be used to show to the user the current state of his hands. Going from simple visual cues such as changing the object color to changing the object opacity or clamping the fingers positions to the boundary of the object.}
+\label{fig:virtual-hands}
+\end{figure}
+
 \section*{Bio-Inspired Framework in Detail}
 \paragraph{Neuroscience and Psychophysics Underpinnings.}
 Real grasping is highly sensitive to multisensory feedback, including digit coordination and subtle force adjustments. By embedding synergy constraints, the authors replicate natural finger interplay. This fosters a stronger sense of embodiment, because the user subconsciously recognizes that the virtual hand’s shape changes match their internal motor patterns. Beyond performance, the approach addresses cognitive demands by lowering the mental dissonance between what the user intends and what they see.
@@ -80,7 +92,7 @@ By systematically evaluating these modifications, we can see whether synergy con
 The synergy approach can lessen CPU load, but tasks with multiple simultaneous grasps or complex geometry may still push performance limits. The authors suggest parallelizing synergy and collision checks on GPUs or multi-core systems. This could keep latencies low, especially for multi-handed interactions or collaborative VR sessions.
 
 \paragraph{Haptic Feedback Potential.}
-While synergy-based modeling partially compensates for absent force feedback (by preventing overt visual errors), rich haptic cues might further enhance realism. Light gloves or ultrasonic arrays could convey contact points or friction. This synergy-haptic blend may yield better user acceptance in high-precision scenarios like medical VR.
+While synergy-based modeling partially compensates for absent force feedback (by preventing overt visual errors), rich haptic cues might further enhance realism. Light gloves or ultrasonic arrays could convey contact points or friction. This synergy-haptic blend may yield better user acceptance in high-precision scenarios like medical VR. Moreover, analyzing with said gloves the most frequent movements of a surgical operation to focus on the most import contact points could make the computation faster.
 
 \paragraph{Object Diversity.}
 Most examples center on small, rigid items. Extending synergy-based constraints to objects with unusual mass distributions, or squishy surfaces, remains an open question. The authors propose an adaptive synergy matrix that modifies how each finger synergy responds to dynamic shape deformations, but this requires more research.
